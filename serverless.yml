@@ -1,0 +1,25 @@
+service: gestion-empleados
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  profile: luijo-profile
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource: arn:aws:dynamodb:us-east-1:572670428345:table/Empleados-Nex 
+
+plugins:
+  - serverless-offline
+
+functions:
+  createEmployee:
+    handler: handler.createEmployee
+    events:
+      - http:
+          path: /empleados
+          method: post
+    memorySize: 128
