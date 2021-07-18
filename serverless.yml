@@ -23,3 +23,10 @@ functions:
           path: /empleados
           method: post
     memorySize: 128
+  updateEmployee:
+    handler: handler.updateEmployee
+    events:
+      - http:
+          path: /empleados/{id}
+          method: put
+    memorySize: 128

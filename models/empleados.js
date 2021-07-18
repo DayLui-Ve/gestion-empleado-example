@@ -13,6 +13,20 @@ const createEmployeeDoc = async (Item) => {
     return docClient.put(params).promise();
 }
 
+const getEmployeeByIdDoc = async (id) => {
+
+    const params = {
+        TableName,
+        Key:{
+            "id": id
+        }
+    };
+
+    return docClient.get(params).promise();
+
+}
+
 module.exports = {
-    createEmployeeDoc
+    createEmployeeDoc,
+    getEmployeeByIdDoc
 }
